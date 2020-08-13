@@ -1,0 +1,24 @@
+<?php
+
+namespace Alura\DesignPattern\Impostos;
+
+use Alura\DesignPattern\Orcamento;
+
+class IKCV extends ImpostoCom2Aliquotas
+{
+
+    protected function deveAplicarTaxaMaxima(Orcamento $orcamento): bool
+    {
+        return $orcamento->valor > 300 && $orcamento->quantidadeItnes > 3;
+    }
+
+    protected function calculaTaxaMaxima(Orcamento $orcamento): float
+    {
+        return $orcamento->valor * 0.04;
+    }
+
+    protected function calculaTaxaMinima(Orcamento $orcamento): float
+    {
+        return $orcamento->valor * 0.025;
+    }
+}
